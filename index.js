@@ -37,6 +37,7 @@ app.post('/webhook/', function (req, res) {
             let text = event.message.text
             var str = encodeURIComponent(text)
             var url = baseUrl + str + "?appId=f5c5e7fa&appKey=[935aec3005dba2beb008966bdedcbe2b"
+            console.log(url)
             requestify.get(url)
               .then(function(response) {
                 // Get the response body (JSON parsed or jQuery object for XMLs)
