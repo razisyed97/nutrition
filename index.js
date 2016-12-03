@@ -42,6 +42,10 @@ app.post('/webhook/', function (req, res) {
               .then(function(response) {
                 // Get the response body (JSON parsed or jQuery object for XMLs)
                 console.log(response.getBody());
+            }
+              .catch(){
+                console.log("fuck this");
+              }
   }
 );
             sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
