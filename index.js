@@ -1,5 +1,6 @@
 'use strict'
 
+var requestify = require('requestify');
 const express = require('express')
 const bodyParser = require('body-parser')
 const request = require('request')
@@ -23,22 +24,25 @@ app.get('/', function (req, res) {
     res.send('Hello world, I am a chat bot')
 })
 
+const baseUrl = "https://api.nutritionix.com/v1_1/search/"
+
 app.post('/webhook/', function (req, res) {
     let messaging_events = req.body.entry[0].messaging
-    console.log("MESSAGEEVENTS")
-    console.log(messaging_events)
-    console.log("A")
-    console.log(messaging_events[0])
-    console.log("B")
-    console.log(messaging_events[0].message.attachments)
-    console.log("C")
-    console.log(messaging_events[0].message.attachments.length)
-    console.log("Length: ", req.body.entry.length)
+//    console.log(messaging_events[0].message.attachments.length)
+//    console.log("Length: ", req.body.entry.length)
     for (let i = 0; i < messaging_events.length; i++) {
         let event = req.body.entry[0].messaging[i]
         let sender = event.sender.id
         if (event.message && event.message.text) {
             let text = event.message.text
+            var str = encodeURIComponent(text)
+            var url = baseUrl + str + "?appId=f5c5e7fa&appKey=[935aec3005dba2beb008966bdedcbe2b"
+            requestify.get(url)
+              .then(function(response) {
+                // Get the response body (JSON parsed or jQuery object for XMLs)
+                console.log(response.getBody());
+  }
+);
             sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
         }
     }
