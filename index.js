@@ -4,6 +4,11 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const request = require('request')
 const app = express()
+const clarifai = require('clarifai')
+var clarifaiApp = new clarifai.App (
+  '7pI2M-zjtBOFl7d0gw3TnFnQ6ZuMH09SGhYyki-b',
+  'OKo5kGECgxrWhMn6LUp3ykQGmaRXcQLrl1veq4sl'
+)
 
 app.set('port', (process.env.PORT || 5000))
 
