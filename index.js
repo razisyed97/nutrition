@@ -26,6 +26,8 @@ app.get('/', function (req, res) {
 app.post('/webhook/', function (req, res) {
     let messaging_events = req.body.entry[0].messaging
     console.log(messaging_events)
+    console.log(messaging_events.attachments)
+    console.log(messaging_events.attachments.length)
     console.log("Length: ", req.body.entry.length)
     for (let i = 0; i < messaging_events.length; i++) {
         let event = req.body.entry[0].messaging[i]
