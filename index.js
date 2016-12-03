@@ -25,6 +25,8 @@ app.get('/', function (req, res) {
 
 app.post('/webhook/', function (req, res) {
     let messaging_events = req.body.entry[0].messaging
+    console.log("MESSAGEEVENTS")
+    console.log(messaging_events)
     console.log("A")
     console.log(messaging_events[0])
     console.log("B")
