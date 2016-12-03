@@ -16,7 +16,7 @@ app.set('port', (process.env.PORT || 5000))
 app.use(bodyParser.json())
 
 // Process application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.urlencoded({extended: true}))
 
 // Index route
 app.get('/', function (req, res) {
@@ -26,8 +26,8 @@ app.get('/', function (req, res) {
 app.post('/webhook/', function (req, res) {
     let messaging_events = req.body.entry[0].messaging
     console.log(messaging_events)
-    console.log(messaging_events.attachments)
-    console.log(messaging_events.attachments.length)
+    console.log(messaging_events[0].attachments)
+    console.log(messaging_events[0].attachments.length)
     console.log("Length: ", req.body.entry.length)
     for (let i = 0; i < messaging_events.length; i++) {
         let event = req.body.entry[0].messaging[i]
