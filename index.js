@@ -18,15 +18,9 @@ app.get('/', function (req, res) {
     res.send('Hello world, I am a chat bot')
 })
 
-app.get('/test', function (req, res) {
-    res.send('Hello world, I am a chat bot too')
-})
-
-
-
 // for Facebook verification
 app.get('/webhook/', function (req, res) {
-    if (req.query['hub.verify_token'] === 'EAAQqEd0gfagBAAhDCKOiYug6iey9MW0fRaqSwQKAhPTAnoCWo7R76MpqgWMdQoyKaI3CW6jTO5UJNBbILZAIjQeI7uMrg3mY5Ll4OgLluRc36TKlrRQBKdMyFhPUGoiga5USZCIVCrIzQZAlaSe5r1kWIFvqf5xbAh6YZCmmpQZDZD') {
+    if (req.query['hub.verify_token'] === 'my_voice_is_my_password_verify_me') {
         res.send(req.query['hub.challenge'])
     }
     res.send('Error, wrong token')
