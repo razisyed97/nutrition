@@ -5,7 +5,7 @@ const bodyParser = require('body-parser')
 const request = require('request')
 const app = express()
 const clarifai = require('clarifai')
-var clarifaiApp = new clarifai.App (
+var clarifaiApp = new clarifai.App(
   '7pI2M-zjtBOFl7d0gw3TnFnQ6ZuMH09SGhYyki-b',
   'OKo5kGECgxrWhMn6LUp3ykQGmaRXcQLrl1veq4sl'
 )
@@ -25,6 +25,7 @@ app.get('/', function (req, res) {
 
 app.post('/webhook/', function (req, res) {
     let messaging_events = req.body.entry[0].messaging
+    console.log(req.body)
     for (let i = 0; i < messaging_events.length; i++) {
         let event = req.body.entry[0].messaging[i]
         let sender = event.sender.id
